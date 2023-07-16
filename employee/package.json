@@ -8,13 +8,24 @@
   "dependencies": {
     "@sap/cds": "^7",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
-    "express": "^4"
+    "@ui5/cli": "^3.3.2",
+    "express": "^4",
+    "npm-run-all": "^4.1.5",
+    "ui5-middleware-simpleproxy": "^0.9.10"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "sqlite3": "^5.1.6"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "start:cds": "cds-serve",
+    "start:ui5": "ui5 serve -o index.html",
+    "start:vs": "npm-run-all --parallel start:cds start:ui5"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-simpleproxy"
+    ]
   }
 }

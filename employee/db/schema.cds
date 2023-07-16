@@ -6,7 +6,7 @@ entity Employees : managed {
   name  : localized String(111);
   position  : localized String(1111);
   manager : Association to Managers;
-  genre  : Association to Genres;
+  department  : Association to Departments;
   salary  : Decimal(9,2);
   currency : Currency;
 }
@@ -18,15 +18,9 @@ entity Managers : managed {
 }
 
 /** Hierarchically organized Code List for Genres */
-/**entity Departments : sap.common.CodeList { 
+entity Departments : sap.common.CodeList { 
   key ID   : Integer;
   parent   : Association to Departments;
   children : Composition of many Departments on children.parent = $self;
-}*/
-
-/** Hierarchically organized Code List for Genres */
-entity Genres : sap.common.CodeList { 
-  key ID   : Integer;
-  parent   : Association to Genres;
-  children : Composition of many Genres on children.parent = $self;
 }
+
